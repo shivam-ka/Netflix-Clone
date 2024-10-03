@@ -9,23 +9,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-<ToastContainer
-  position="top-right"
-  autoClose={5000}
-  hideProgressBar={false}
-  newestOnTop={false}
-  closeOnClick
-  rtl={false}
-  pauseOnFocusLoss
-  draggable
-  pauseOnHover
-  theme="dark"
-
-/>
 
 const App = () => {
-
-
 
   const navigate = useNavigate();
 
@@ -33,32 +18,9 @@ const App = () => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
         navigate('/')
-        console.log('logged in ');
-        toast.success('LogIn successfully', {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-         
-          });
-
-      } else {
-        console.log(('loged out'));
+      }
+      else {
         navigate('/login')
-        toast.success('Logged Out', {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
       }
     })
 
@@ -70,7 +32,7 @@ const App = () => {
 
   return (
     <div>
-      <ToastContainer theme='dark'/>
+      <ToastContainer theme='dark' />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />

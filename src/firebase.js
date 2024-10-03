@@ -32,9 +32,10 @@ const signup = async (name, email, password) => {
             authProvider: "local",
             email,
         });
+        toast.success("Account Created")
     } catch (error) {
         console.log("auth Error", error);
-        toast.error(error.code);
+        toast.error(error.code.split('/')[1].split('-').join(" "));
 
     }
 }
@@ -42,14 +43,16 @@ const signup = async (name, email, password) => {
 const login = async (email, password) => {
     try {
       const log = await signInWithEmailAndPassword(auth, email, password);
+      toast.success("Login Successfully ")
     } catch (error) {
-        console.log( error);
+        console.log(error.code.split('/')[1].split('-').join(" "));
         toast.error("Invailid User");
     }
 }
 
 const logout = () => {
     signOut(auth);
+    toast.success("Log Out Successfully")
 }
 
 export { auth, dataBase, login, logout, signup };
